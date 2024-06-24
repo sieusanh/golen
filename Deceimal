@@ -1,0 +1,68 @@
+package De
+// Symbol       Value
+// I             1
+// V             5
+// X             10
+// L             50
+// C             100
+// D             500
+// M             1000
+
+// MCMXCIV
+// 1100
+
+/**
+ * 
+
+Example 1:
+Input: s = "III"
+Output: 3
+Explanation: III = 3.
+
+Example 2:
+Input: s = "LVIII"
+Output: 58
+Explanation: L = 50, V= 5, III = 3.
+
+Example 3:
+Input: s = "MCMXCIV"
+Output: 1994
+Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.
+
+*/
+
+const testCases = [
+    {expected: 3, numeral: "III"}
+]
+
+function romanToInt(s: string): number {
+    const numeralsMapping = {
+        I: 1,
+        V: 5,
+        X: 10,
+        L: 50,
+        C: 100,
+        D: 500,
+        M: 1000
+    }
+    let count = 0;
+    for (let idx = s.length - 1; idx > 0; idx--) {
+        if (numeralsMapping[s[idx + 1]] >= numeralsMapping[s[idx]]) {
+            count += numeralsMapping[s[idx]];
+        }
+        
+    }
+    return 0;
+};
+
+let check:boolean = true;
+
+for (const test of testCases) {
+    if (test.expected != romanToInt(test.numeral)) {
+        check = false;
+        break;
+    };
+}
+
+console.log({ check })
+
